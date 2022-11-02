@@ -3,6 +3,6 @@ const router = express.Router();
 const controller = require('../controllers/questionsController.js')
 
 // routes
-router.get('questions/',controller.get)
+router.get('/',controller.get)
 
 module.exports = router
