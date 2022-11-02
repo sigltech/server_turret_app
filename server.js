@@ -31,6 +31,11 @@ app.get('/', (req, res) => {
     res.send('Hello World!');
 });
 
+
+// Questions Routes
+const questionsRoutes = require('./routes/questions')
+app.use('/questions',questionsRoutes)
+
 // start server
 
 app.listen(PORT, () => {
