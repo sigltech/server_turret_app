@@ -1,5 +1,5 @@
 module.exports = {
     get: (req, res) => {
-        res.send("Hello from the questionController!");
+        res.send("Hello from the questionsController!");
     },
 };
