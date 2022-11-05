@@ -14,16 +14,32 @@ app.use(express.urlencoded({ extended: true }));
 
 // connect to mongoose 
 
-mongoose.connect(`mongodb+srv://${username}:${password}@cluster0.iepp8yq.mongodb.net/?retryWrites=true&w=majority`, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-}, (err) => {
-    if (err) {
-        console.log(err);
-    } else {
-        return console.log('Connected to MongoDB');
-    }
-});
+switch (process.env.ENVIRONMENT) {
+    case "production":
+        mongoose.connect(`mongodb+srv://${username}:${password}@cluster0.iepp8yq.mongodb.net/?retryWrites=true&w=majority`, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        }, (err) => {
+            if (err) {
+                console.log(err);
+            } else {
+                return console.log('Connected to MongoDB Production Server');
+            }
+        });
+        break;
+    case "development":
+        mongoose.connect(`mongodb://127.0.0.1:27017`, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        }, (err) => {
+            if (err) {
+                console.log(err);
+            } else {
+                return console.log('Connected to MongoDB Local Development Server');
+            }
+        });
+        break;
+}
 
 // initial route
 
