@@ -9,7 +9,6 @@ module.exports = {
                 res.status(200).send(questions)
             }
         })
-        // res.send("Hello from the questionsController!");
     },
     post: (req, res) => {
         const newQuestion = new Question(req.body);
