@@ -51,6 +51,9 @@ app.get('/', (req, res) => {
 // Questions Routes
 const questionsRoutes = require('./routes/questions')
 app.use('/questions',questionsRoutes)
+// Users Routes
+const usersRoutes = require('./routes/users')
+app.use('/users',usersRoutes)
 
 // start server
 
