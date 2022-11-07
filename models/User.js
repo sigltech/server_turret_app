@@ -1,0 +1,12 @@
+//The first argument is the singular name of the collection your model is for. Mongoose automatically looks for the plural, lowercased version of your model name. Thus, for the example above, the model Tank is for the tanks collection in the database.
+
+const mongoose = require('mongoose');
+
+const schema = new mongoose.Schema({
+    _id: String,
+    name: String
+});
+
+const model = mongoose.model('User', schema);
+
+module.exports = model;
