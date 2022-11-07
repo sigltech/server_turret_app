@@ -1,5 +1,5 @@
 const User = require('../models/User')
-
+const mongoose = require('mongoose');
 module.exports = {
     get: (req, res) => {
         User.find({}, (err, users) => {
@@ -11,19 +11,20 @@ module.exports = {
         })
     },
     get_id: (req, res) => {
-        const USER_ID = req.params.id
+        const USER_ID = mongoose.Types.ObjectId(req.params.id)
         console.log(`Searching for ${USER_ID}...`)
-        // User.findOne({ _id: USER_ID } , (err, user) => {
+        // User.findOne({ "_id": ObjectId( USER_ID) } , (err, user) => {
         // User.findById(USER_ID, { lean: true }, (err, user) => {
+        // User.findOne({ "_id": USER_ID }, (err, user) => {
         User.findById(USER_ID, (err, user) => {
             if (err) {
                 console.log(err)
                 res.status(500).send(err)
-            } else if (user === null){
-                console.log("Result: ",user)
+            } else if (user === null) {
+                console.log("Result: ", user)
                 res.status(200).send(`No Data: User ${USER_ID} not found`)
             } else {
-                console.log("Result: ",user)
+                console.log("Result: ", user)
                 res.status(200).send(user)
             }
         })
