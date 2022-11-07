@@ -11,11 +11,7 @@ module.exports = {
         })
     },
     get_id: (req, res) => {
-        const USER_ID = mongoose.Types.ObjectId(req.params.id)
-        console.log(`Searching for ${USER_ID}...`)
-        // User.findOne({ "_id": ObjectId( USER_ID) } , (err, user) => {
-        // User.findById(USER_ID, { lean: true }, (err, user) => {
-        // User.findOne({ "_id": USER_ID }, (err, user) => {
+        const USER_ID = req.params.id
         User.findById(USER_ID, (err, user) => {
             if (err) {
                 console.log(err)
@@ -35,4 +31,3 @@ module.exports = {
         res.send(newUser);
     }
 };
-
