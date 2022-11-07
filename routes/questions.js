@@ -1,3 +1,5 @@
+// Routes for URL/questions
+
 const express = require('express');
 const router = express.Router();
 const controller = require('../controllers/questionsController.js')
