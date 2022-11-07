@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
 const schema = new mongoose.Schema({
-    _id: String,
     title: String,
     function: String,
     jest_function_incomplete: String,

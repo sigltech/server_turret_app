@@ -28,15 +28,14 @@ switch (process.env.ENVIRONMENT) {
         });
         break;
     case "development":
-        mongoose.connect(`mongodb://127.0.0.1:27017`, {
+        const URL = "127.0.0.1:27017"
+        const DATABASE = "turretDB"
+        mongoose.connect(`mongodb://${URL}/${DATABASE}`, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         }, (err) => {
-            if (err) {
-                console.log(err);
-            } else {
-                return console.log('Connected to MongoDB Local Development Server');
-            }
+            if (err) {console.log(err)}
+            else {return console.log('Connected to MongoDB Local Development Server')};
         });
         break;
 }
@@ -51,9 +50,11 @@ app.get('/', (req, res) => {
 // Questions Routes
 const questionsRoutes = require('./routes/questions')
 app.use('/questions',questionsRoutes)
+// Users Routes
+const usersRoutes = require('./routes/users')
+app.use('/users',usersRoutes)
 
 // start server
-
 app.listen(PORT, () => {
     console.log(`Server is running on port: ${PORT}`);
 })
