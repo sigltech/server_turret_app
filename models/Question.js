@@ -2,12 +2,14 @@ const mongoose = require('mongoose');
 
 const schema = new mongoose.Schema({
     title: String,
-    function: String,
-    jest_function_incomplete: String,
-    jest_function_complete: String,
-    description: String,
+    index: Number,
+    language: String,
     difficulty: String,
-    language: String
+    description: String,
+    code_question: String,
+    code_answer: String,
+    failed_message: String,
+    success_message: String
 });
 
 const model = mongoose.model('Question', schema);
