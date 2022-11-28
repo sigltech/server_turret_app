@@ -24,6 +24,10 @@ const schema = new mongoose.Schema({
         type: String,
         require: true
     },
+    hint: {
+        type: String,
+        require: true
+    },
     code_question: {
         type: String,
         require: true
